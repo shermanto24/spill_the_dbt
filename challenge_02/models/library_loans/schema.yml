@@ -1,0 +1,63 @@
+version: 2
+
+sources:
+  - name: library
+    schema: main
+    tables:
+      - name: books_factual
+      - name: books_fictional
+      - name: loans
+      - name: members
+
+models:
+  # All id fields should not contain null values
+  # All books in the factual and fictional ranges should be unique
+  - name: stg_books
+    columns:
+      - name: book_id
+        data_tests:
+          - unique
+          - not_null
+  
+  - name: stg_loans
+    columns:
+      - name: loan_id
+        data_tests:
+          - not_null
+
+  - name: stg_members
+    columns:
+      - name: member_id
+        data_tests:
+          - not_null
+      # Customers should have three tiers of membership: Bronze, Silver and Gold
+      - name: membership_tier
+        data_tests:
+          - accepted_values:
+              arguments:
+                values: ['Bronze', 'Silver', 'Gold']
+      - name: member_name
+        tests:
+          - no_digits_in_name
+
+  - name: customer_withdrawals
+    columns:
+      - name: member_name
+        tests:
+          - no_digits_in_name
+
+  - name: customers_with_late_fees
+    columns:
+      - name: fee_to_pay
+        tests:
+          - not_negative
+      - name: member_name
+        tests:
+          - one_row_per_id
+          - no_digits_in_name
+    tests:
+      - dbt_utils.equal_rowcount:
+          compare_model: ref('solution')
+
+seeds:
+  - name: solution
