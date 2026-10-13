@@ -1,15 +1,10 @@
-Welcome to your new dbt project!
+# Challenge 03: Whatever the Weather
 
-### Using the starter project
+## Objective
 
-Try running the following commands:
-- dbt run
-- dbt test
+Ran a Python model within dbt to fetch weather readings for different office locations and create an incremental model to store historical weather data.
 
-
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+## Main Tasks
+* **Python API Ingestion**: Converted a Python script into a native dbt Python model (`def model(dbt, session)`) to fetch external API weather data dynamically using seed locations.
+* **Expectation Testing**: Integrated the `dbt-expectations` package to validate latitude and longitude.
+* **Incremental Processing**: Implemented an incremental SQL model (`is_incremental()`) to append new readings without duplicating records.
