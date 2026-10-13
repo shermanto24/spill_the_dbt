@@ -1,15 +1,12 @@
-Welcome to your new dbt project!
+# Challenge 01: Lego Data Analysis
 
-### Using the starter project
+## Objective
 
-Try running the following commands:
-- dbt run
-- dbt test
+Set up a foundational dbt Core project to migrate legacy SQL scripts, configure model dependencies, and generate documentation.
 
+## Main Tasks
+* **Project Setup & Configuration**: Initialized a dbt Core project with DuckDB and configured `profiles.yml`.
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+* **Modularizing Models**: Refactored a monolithic SQL script and used Jinja to reference the components.
+
+* **Data Testing and Documentation**: Defined standard data tests and used `dbt docs generate` to create documentation.
