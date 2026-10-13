@@ -1,15 +1,10 @@
-Welcome to your new dbt project!
+# Challenge 02: Library Loan Issues
 
-### Using the starter project
+## Objective
 
-Try running the following commands:
-- dbt run
-- dbt test
+Identified and fixed issues in a dbt model that aggregates late fees for overdue library loans by writing and running tests. Compared the fixed model's output with a provided CSV seed using the `dbt-utils` package.
 
-
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+## Main Tasks
+* **Staging Models**: Refactored raw data into clean staging models (`stg_books`, `stg_members`, `stg_loans`).
+* **Custom Testing**: Developed custom generic tests to validate data quality.
+* **Output Validation via Packages**: Integrated `dbt-utils` to run additional tests comparing my model to the solution file.
